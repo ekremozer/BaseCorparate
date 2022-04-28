@@ -1,0 +1,54 @@
+﻿@using BaseCorporate.Utility.Helper
+@using NonFactors.Mvc.Grid
+@model BaseCorporate.Service.Model.PagedList<BaseCorporate.Service.Model.PageNotFoundLogListItem>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    404 Kayıtları
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a onclick="PageNotFoundLogDeleteAll()">Tümünü Sil</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                @(Html
+                    .Grid(Model.Items)
+                    .Build(columns =>
+                    {
+                        columns.Add(model => model.PageUrl).Titled("Sayfa");
+                        columns.Add(model => model.ReferrerUrl).Titled("Referans");
+                        columns.Add(model => model.UserIp).Titled("IP");
+                        columns.Add(model => model.UserAgent).Titled("UserAgent");
+                        columns.Add(model => model.Count).Titled("Giriş Sayısı");
+                        columns.Add(model => ExtensionMethods.GetFancyboxLink($"/admin/redirectrecord/add?oldUrl={model.PageUrl}", "btn btn-primary waves-effect",600,600,"Yönlendirme Ekle") +" "+ 
+                                             ExtensionMethods.GetDeleteConfirm($"onclick='PageNotFoundLogDelete({model.Id})'", "","Sil")).Encoded(false).Titled("İşlem");
+                    })
+                    .Id("pageNotFoundLog-grid")
+                    .Using(GridProcessingMode.Manual)
+                    .Empty("Veri bulunamadı")
+                    .Pageable(pager =>
+                    {
+                        pager.TotalRows = Model.TotalCount;
+                        pager.RowsPerPage = Model.ItemsPerPage;
+                    })
+                    .RowAttributed(model => new { data_id = model.Id })
+                    )
+
+            </div>
+        </div>
+    </div>
+</div>

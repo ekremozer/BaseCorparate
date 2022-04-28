@@ -1,0 +1,50 @@
+﻿@using BaseCorporate.Utility.Helper
+@using NonFactors.Mvc.Grid
+@model List<BaseCorporate.Service.Model.CategoryModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Kategoriler
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a data-src="/admin/category/add" href="javascript:;" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : false, "css" : {"width" : "600px","height" : "600px"}}}'>Kategori Ekle</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                @(Html
+                    .Grid(Model)
+                    .Build(columns =>
+                    {
+                        columns.Add(model => model.DisplayName).Titled("Adı");
+                        columns.Add(model => model.CreatedAt).Titled("Oluşturma Tarihi");
+                        columns.Add(model => model.CreatedBy).Titled("Oluşturan");
+                        columns.Add(model => model.UpdatedAt).Titled("Güncelleme Tarihi");
+                        columns.Add(model => model.UpdatedBy).Titled("Güncelleyen");
+                        columns.Add(model => ExtensionMethods.GetFancyboxLink($"/admin/category/update/{model.Id}", "btn btn-primary waves-effect",600,600,"Düzenle") +" "+ ExtensionMethods.GetDeleteConfirm($"onclick='CategoryDelete({model.Id})'", "","Sil")).Encoded(false).Titled("İşlem");
+                    })
+                    .Id("category-grid")
+                    .Using(GridFilterMode.Header)
+                    .Empty("Veri bulunamadı")
+                    .Filterable()
+                    .Sortable()
+                    .Pageable()
+                    .RowAttributed(model => new { data_id = model.Id })
+                    )
+
+            </div>
+        </div>
+    </div>
+</div>

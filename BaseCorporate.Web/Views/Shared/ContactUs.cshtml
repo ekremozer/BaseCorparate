@@ -1,0 +1,95 @@
+﻿@using BaseCorporate.Service.Helper
+@using BaseCorporate.Utility.Helper
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@section Head{@Html.Partial("_Head", HeadHelper.GetCustomHeadModel("İletişim", "/iletisim"))}
+@await Html.PartialAsync("_BreadCrumb", ExtensionMethods.GetBreadCrumbListElement("/iletisim", "İletişim", "2"))
+<section class="contact-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>İletişim</h1>
+            </div>
+            <div class="col-lg-6">
+                <div id="map" style="height:727px;"></div>
+            </div>
+            <div class="col-lg-6 contact-content-right">
+                <div>
+                    <h4>Adres</h4>
+                    <p>Mecidiyeköy Mah. Naci Kasim Sok. No:10 D: 4 Şişli/İstanbul </p>
+                </div>
+                @*<div>
+                        <h4>Telefon</h4>
+                        <p>444 0 323</p>
+                        <p>+90 544 433 53 22</p>
+                    </div>*@
+                <div>
+                    <h4>E-mail</h4>
+                    <p><a href="mailto:info@davadilekcesi.net">info@davadilekcesi.net</a></p>
+                </div>
+                <div>
+                    <h4>Sosyal Medya</h4>
+                    <p>Bizi takip edin!</p>
+                    <ul class="contact-social-media">
+                        <li>
+                            <a href="https://twitter.com/DavadilekcesiN">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 30 30" fill="#1EBEF0"><path d="M28,6.937c-0.957,0.425-1.985,0.711-3.064,0.84c1.102-0.66,1.947-1.705,2.345-2.951c-1.03,0.611-2.172,1.055-3.388,1.295 c-0.973-1.037-2.359-1.685-3.893-1.685c-2.946,0-5.334,2.389-5.334,5.334c0,0.418,0.048,0.826,0.138,1.215 c-4.433-0.222-8.363-2.346-10.995-5.574C3.351,6.199,3.088,7.115,3.088,8.094c0,1.85,0.941,3.483,2.372,4.439 c-0.874-0.028-1.697-0.268-2.416-0.667c0,0.023,0,0.044,0,0.067c0,2.585,1.838,4.741,4.279,5.23 c-0.447,0.122-0.919,0.187-1.406,0.187c-0.343,0-0.678-0.034-1.003-0.095c0.679,2.119,2.649,3.662,4.983,3.705 c-1.825,1.431-4.125,2.284-6.625,2.284c-0.43,0-0.855-0.025-1.273-0.075c2.361,1.513,5.164,2.396,8.177,2.396 c9.812,0,15.176-8.128,15.176-15.177c0-0.231-0.005-0.461-0.015-0.69C26.38,8.945,27.285,8.006,28,6.937z" /></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/davadilekcesi-net-595362214/">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" fill="#0077b5"><path d="M8.6425781 4C7.1835781 4 6 5.181625 6 6.640625C6 8.099625 7.182625 9.3085938 8.640625 9.3085938C10.098625 9.3085938 11.283203 8.099625 11.283203 6.640625C11.283203 5.182625 10.101578 4 8.6425781 4 z M 21.535156 11C19.316156 11 18.0465 12.160453 17.4375 13.314453L17.373047 13.314453L17.373047 11.310547L13 11.310547L13 26L17.556641 26L17.556641 18.728516C17.556641 16.812516 17.701266 14.960938 20.072266 14.960938C22.409266 14.960937 22.443359 17.145609 22.443359 18.849609L22.443359 26L26.994141 26L27 26L27 17.931641C27 13.983641 26.151156 11 21.535156 11 z M 6.3632812 11.310547L6.3632812 26L10.923828 26L10.923828 11.310547L6.3632812 11.310547 z" /></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/Davadilekcesinet-108810471424562">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" fill="#1877F2"><path d="M19.253906 2C15.311906 2 13 4.0821719 13 8.8261719L13 13L8 13L8 18L13 18L13 30L18 30L18 18L22 18L23 13L18 13L18 9.671875C18 7.884875 18.582766 7 20.259766 7L23 7L23 2.2050781C22.526 2.1410781 21.144906 2 19.253906 2 z" /></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/net.davadilekcesi/">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64"><linearGradient id="jm_nAfYbxsVmTlYr5N4x9a" x1="32" x2="32" y1="6.667" y2="57.872" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stop-color="#1a6dff" /><stop offset="1" stop-color="#c822ff" /></linearGradient><path fill="url(#jm_nAfYbxsVmTlYr5N4x9a)" d="M44,57H20c-7.168,0-13-5.832-13-13V20c0-7.168,5.832-13,13-13h24c7.168,0,13,5.832,13,13v24 C57,51.168,51.168,57,44,57z M20,9C13.935,9,9,13.935,9,20v24c0,6.065,4.935,11,11,11h24c6.065,0,11-4.935,11-11V20 c0-6.065-4.935-11-11-11H20z" /><linearGradient id="jm_nAfYbxsVmTlYr5N4x9b" x1="32" x2="32" y1="18.167" y2="45.679" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stop-color="#6dc7ff" /><stop offset="1" stop-color="#e6abff" /></linearGradient><path fill="url(#jm_nAfYbxsVmTlYr5N4x9b)" d="M32,45c-7.168,0-13-5.832-13-13c0-7.168,5.832-13,13-13c7.168,0,13,5.832,13,13 C45,39.168,39.168,45,32,45z M32,23c-4.962,0-9,4.038-9,9c0,4.963,4.038,9,9,9c4.963,0,9-4.037,9-9C41,27.038,36.963,23,32,23z" /><linearGradient id="jm_nAfYbxsVmTlYr5N4x9c" x1="46" x2="46" y1="12.75" y2="23.049" gradientUnits="userSpaceOnUse" spreadMethod="reflect"><stop offset="0" stop-color="#6dc7ff" /><stop offset="1" stop-color="#e6abff" /></linearGradient><path fill="url(#jm_nAfYbxsVmTlYr5N4x9c)" d="M46 15A3 3 0 1 0 46 21A3 3 0 1 0 46 15Z" /></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    #map {
+        height: 300px;
+    }
+</style>
+<script>
+    function initMap() {
+        var uluru = { lat: 41.067713, lng: 28.998809 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: uluru
+        });
+
+        var contentString = '<div id="content">' +
+            '<div id="bodyContent">' +
+            '<p> Mecidiyeköy Mah.  Naci Kasim Sok. Tekin Apt. No:10/4<br/> ' +
+            'Mecidiyeköy – Şişli/İstanbul<br/>' +
+            '</div>' +
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var image = '/content/img/marker.png';
+        var marker = new google.maps.Marker({
+            position: uluru,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            map: map,
+            title: 'Uluru (Ayers Rock)'
+        });
+        infowindow.open(map, marker);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhb4UXXjRE0MQvTCj2MPrbE-9SH_ASDoc&callback=initMap"></script>

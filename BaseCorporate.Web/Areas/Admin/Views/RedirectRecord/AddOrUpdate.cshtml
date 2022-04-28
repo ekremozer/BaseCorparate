@@ -1,0 +1,37 @@
+﻿@model BaseCorporate.Service.Model.RedirectRecordModel
+@{
+    ViewData["Title"] = "AddOrUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/_IframeLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="body">
+                    <form id="RedirectRecordAddOrUpdate" action="/admin/RedirectRecord/addorupdate" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <div class="col-sm-3">
+                            <label for="oldUrl">Eski Url</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="oldUrl" name="oldUrl" value="@Model.OldUrl" class="form-control" placeholder="Eski Url">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="newUrl">Yeni Url</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="newUrl" name="newUrl" value="@Model.NewUrl" class="form-control" placeholder="Yeni Url">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

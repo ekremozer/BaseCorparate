@@ -1,0 +1,458 @@
+@media (max-width: 1399px) and (min-width:1200px) {
+    .about-us-vision-mission img {
+        width: 324px;
+    }
+
+    .about-us-head span {
+        font-size: 34px;
+    }
+
+    .about-us-head img {
+        max-width: 520px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .add-to-cart-comment {
+        padding: 1rem;
+    }
+
+    .about-us-vision, .about-us-mission {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .about-us-vision-mission {
+        text-align: center;
+    }
+
+        .about-us-vision-mission h4 {
+            padding-top: 1.5rem;
+        }
+
+    .about-us-mission {
+        padding-top: 3rem;
+    }
+
+    .flex_lg_column_reverse {
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 1199px) and (min-width:992px) {
+    .about-us-head span {
+        font-size: 30px;
+    }
+
+    .about-us-head img {
+        max-width: 400px;
+    }
+
+    .invoice-info-textarea {
+        max-width: calc(958px - 4rem);
+    }
+}
+
+@media (max-width: 991px) {
+    .flex_md_column_reverse {
+        flex-direction: column-reverse;
+    }
+
+    .order_md_3 {
+        order: 3;
+    }
+
+    .d_md_none {
+        display: none;
+    }
+
+    .system-work-cards {
+        height: auto;
+        margin-bottom: 3rem;
+    }
+
+    .system-works {
+        padding-bottom: 1rem;
+    }
+
+    .case-purchase-process h2, .lawyer-support h2 {
+        text-align: center;
+        padding-top: 1.5rem;
+    }
+
+    .lawyer-support p {
+        text-align-last: left;
+    }
+
+    .add-to-cart-img {
+        display: none;
+    }
+
+    .case-searchbar {
+        margin-top: 1.5rem;
+    }
+
+    #filter-toggle:not(:checked) ~ .filter-options {
+        display: none;
+    }
+
+    .about-us-bottom {
+        padding-top: 0;
+    }
+
+    .cart-table {
+        margin-bottom: 3rem;
+    }
+
+    .about-us-head img {
+        display: block;
+        float: unset;
+        margin: 1.5rem auto;
+    }
+
+    .login-content .row {
+        flex-direction: column-reverse
+    }
+
+    .login-content button {
+        margin: auto;
+        margin-top: 1.5rem;
+        max-width: 360px;
+        width: 100%;
+    }
+
+    .login-content h1 {
+        border: none;
+    }
+
+    .register-content {
+        padding-bottom: 4rem;
+    }
+
+    .contact-content-right {
+        padding-top: 2rem;
+    }
+
+    .my-account-item {
+        padding-top: 2rem;
+    }
+
+    .add-to-cart-wrapper {
+        margin: 2rem 0;
+    }
+
+    .purchase-road-tab a {
+        flex: 0 0 100%;
+        margin: .5rem 0;
+    }
+
+    .error-content h1 {
+        font-size: 32px;
+        padding-top: 1.5rem;
+    }
+}
+
+@media (max-width: 991px) and (min-width:768px) {
+    .forgot-password .auth-form input, .forgot-password .auth-form button {
+        max-width: 450px;
+        width: 100%;
+    }
+
+    .main-searchbar button {
+        max-width: 180px;
+    }
+
+    .purchased-message p {
+        font-size: 46px;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 767px) {
+    .add-to-cart {
+        flex-direction: column;
+    }
+
+    .add-to-cart-comment {
+        padding: 1rem 1rem 0;
+    }
+
+    .main-searchbar input {
+        height: 72px;
+        padding-left: 1rem;
+    }
+
+    .main-searchbar button {
+        height: 48px;
+        max-width: 105px;
+        font-size: 25px;
+    }
+
+    .most-purchased-cases {
+        padding-top: 2rem;
+    }
+
+    .card-preview {
+        margin-bottom: 1.5rem;
+        margin-left: 0;
+    }
+
+    .user-info-form-group {
+        flex-direction: column;
+    }
+
+    .birthday-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .my-user-information .update-btn {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .user-info-form-item {
+        padding-right: 0;
+    }
+
+    .empty-basket-router {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 767px) and (min-width:576px) {
+    .about-us-head span {
+        font-size: 32px;
+    }
+
+    .purchased-message p {
+        font-size: 34px;
+        line-height: 1.5;
+    }
+
+    .card-preview {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .authentication {
+        justify-content: center;
+        text-align: center;
+        padding: .75rem 0;
+    }
+
+    .logo {
+        justify-content: center;
+        padding-top: 1rem;
+    }
+
+    .add-to-cart-comment {
+        text-align: center;
+    }
+
+    .mobile-menu-btn {
+        padding-right: 1rem;
+    }
+
+    .copyright p {
+        font-size: 16px;
+    }
+
+    .breadcrumb-nav {
+        white-space: nowrap;
+    }
+
+    .advanced-sorting select {
+        width: 12rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .case-sorting-content h1 sup {
+        display: none;
+    }
+
+    .case-card-single .case-card-comment {
+        padding: 1rem 0.5rem;
+    }
+
+    .case-card-single {
+        flex-direction: column;
+    }
+
+    .modal-newsletter input {
+        width: 230px;
+        font-size: 14px;
+        padding-left: .5rem;
+    }
+
+    .modal-newsletter button {
+        padding: .75rem 1rem;
+    }
+
+    .modal-close-btn {
+        top: 2%;
+    }
+
+    .deals-modal-content {
+        padding: 3rem 1rem;
+    }
+
+    .deals-modal-checkbox-group {
+        font-size: 15px;
+    }
+
+    .about-us-head span {
+        font-size: 29px;
+        text-align: left;
+    }
+
+    .about-us-head p {
+        font-size: 16px;
+    }
+
+    .about-us-head h3 {
+        font-size: 26px;
+    }
+
+    .login-facebook {
+        font-size: 21px;
+    }
+
+    .for-login a {
+        display: block;
+        padding-top: .5rem;
+    }
+
+    .contact-social-media li a {
+        width: 61px;
+        height: 61px;
+    }
+
+    .forgot-password .auth-form button img {
+        display: none;
+    }
+
+    .purchased-message p {
+        font-size: 32px;
+        line-height: 1.5;
+    }
+
+    .auth-form {
+        padding: 2rem 2rem;
+    }
+
+    .sign-with-facebook, .sign-with-google {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        margin-top: .5rem;
+    }
+
+        .sign-with-facebook br, .sign-with-google br {
+            display: none;
+        }
+
+    .sign-with span {
+        font-size: 23px;
+    }
+
+    .auth-form-group img {
+        right: 1rem;
+        width: 30px;
+    }
+
+    .auth-form-group input:not([type="checkbox"]) {
+        padding-left: .75rem;
+    }
+
+    .auth-form button img {
+        display: none;
+    }
+
+    .main-searchbar input {
+        height: 56px;
+    }
+
+    .main-searchbar button {
+        max-width: 86px;
+        height: 100%;
+        right: 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    section.system-works .row > * {
+        padding: 0;
+    }
+
+    .empty-basket-router a {
+        margin: auto;
+        margin-bottom: 1rem;
+    }
+
+    .empty-basket-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .empty-basket h4 {
+        padding-top: 1.5rem;
+        text-align: center;
+        margin-bottom: .25rem;
+    }
+
+    .empty-basket p {
+        text-align: center;
+    }
+}
+
+@media (min-width:1200px) {
+    .cart-table-summary-wrapper {
+        padding-left: 3rem;
+    }
+}
+
+@media (min-width:1400px) {
+    .cart-table-summary-wrapper {
+        padding-left: 6rem;
+    }
+}
+
+@media (min-width:992px) {
+    .filter-options {
+        display: block !important;
+    }
+
+    .contact-content iframe {
+        height: 100%;
+        padding-right: 1.5rem;
+    }
+
+    .filter-title {
+        pointer-events: none;
+    }
+}
+
+@media (min-width:768px) {
+}
+
+@media (min-width:576px) {
+    .mobile-menu-btn {
+        margin-right: 15px;
+    }
+
+    .empty-basket-router {
+        display: flex;
+    }
+
+        .empty-basket-router a:not(:last-of-type) {
+            margin-right: 2rem;
+        }
+}
+
+@media (max-width: 480px) {
+    .auth-form {
+        padding: 2rem 1rem;
+    }
+}

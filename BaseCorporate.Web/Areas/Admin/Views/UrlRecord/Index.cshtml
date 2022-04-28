@@ -1,0 +1,42 @@
+﻿@using BaseCorporate.Utility.Helper
+@using NonFactors.Mvc.Grid
+@model List<BaseCorporate.Service.Model.UrlRecordModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Url Kayıtları
+                </h2>
+            </div>
+            <div class="body">
+                @(Html
+                    .Grid(Model)
+                    .Build(columns =>
+                    {
+                        columns.Add(model => model.Slug).Titled("Url");
+                        columns.Add(model => model.ArticleId).Titled("Makale Id");
+                        columns.Add(model => model.CategoryId).Titled("Kategori Id");
+                        columns.Add(model => model.TagId).Titled("Etiket Id");
+                        columns.Add(model => model.TopicId).Titled("Sayfa Id");
+                        columns.Add(model => ExtensionMethods.GetFancyboxLink($"/admin/urlrecord/update/{model.Id}", "btn btn-primary waves-effect", 600, 600, "Düzenle")).Encoded(false).Titled("İşlem");
+                    })
+                    .Id("urlRecord-grid")
+                    .Using(GridFilterMode.Header)
+                    .Empty("Veri bulunamadı")
+                    .Filterable()
+                    .Sortable()
+                    .Pageable()
+                    .RowAttributed(model => new { data_id = model.Id })
+                    )
+
+            </div>
+        </div>
+    </div>
+</div>
+

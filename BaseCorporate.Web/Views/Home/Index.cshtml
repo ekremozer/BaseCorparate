@@ -1,0 +1,11 @@
+﻿@using BaseCorporate.Service.Helper
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@section Head{@await Html.PartialAsync("_Head", HeadHelper.GetDefaultHeadModel())}
+@Html.Partial("_SearchBar")
+@Html.Partial("_SystemWorks")
+@Html.Partial("_PurchaseProcess")
+@Html.Partial("_LawyerSupport")
+@Html.Partial("_LastAdded")
+@Html.Partial("_BestSeller")
+

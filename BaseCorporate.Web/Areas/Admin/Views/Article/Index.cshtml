@@ -1,0 +1,53 @@
+﻿@using BaseCorporate.Utility.Helper
+@using NonFactors.Mvc.Grid
+@model BaseCorporate.Service.Model.PagedList<BaseCorporate.Service.Model.ArticleAdminListItem>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Makaleler
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="/admin/article/add">Makale Ekle</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                @(Html
+                    .Grid(Model.Items)
+                    .Build(columns =>
+                    {
+                        columns.Add(model => model.Title).Titled("Başlık");
+                        columns.Add(model => model.Category).Titled("Kategori").UsingFilterOptions(ViewBag.Categories as IEnumerable<SelectListItem>).Encoded(false);
+                        columns.Add(model => model.IsActive).Titled("Aktif");
+                        columns.Add(model => $"<a href='/admin/article/update/{model.Id}' class='btn btn-primary waves-effect'>Düzenle</a> " + ExtensionMethods.GetDeleteConfirm($"onclick='ArticleDelete({model.Id})'", "", "Sil")).Encoded(false).Titled("İşlem");
+                    })
+                    .Id("article-grid")
+                    .Using(GridProcessingMode.Manual)
+                    .Using(GridFilterMode.Excel)
+                    .Empty("Veri bulunamadı")
+                    .Filterable()
+                    .Pageable(pager =>
+                    {
+                        pager.TotalRows = Model.TotalCount;
+                        pager.RowsPerPage = Model.ItemsPerPage;
+                    })
+                    .RowAttributed(model => new { data_id = model.Id })
+                    )
+            </div>
+        </div>
+    </div>
+</div>

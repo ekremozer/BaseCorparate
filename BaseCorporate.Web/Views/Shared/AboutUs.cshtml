@@ -1,0 +1,62 @@
+﻿@using BaseCorporate.Service.Helper
+@using BaseCorporate.Utility.Helper
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@section Head{@Html.Partial("_Head", HeadHelper.GetCustomHeadModel("Hakkımızda", "/hakkimizda"))}
+@await Html.PartialAsync("_BreadCrumb", ExtensionMethods.GetBreadCrumbListElement("/hakkimizda", "Hakkımızda", "2"))
+<section class="">
+    <div class="container">
+        <div class="row about-us-head">
+            <div class="col-12">
+                <h2>Dava Dilekçesi Hakkında</h2>
+            </div>
+            <div class="col-12">
+                <img src="/assets/images/about-us.png" alt="Hakkımızda Görsel">
+                <span>Dijitalleşen dünyada “<h1>Hızlı ve Kolay Ulaşılabilen Dilekçe</h1>” hizmetimizle  hukuki süreçlerinize dilekçe desteği ile katkı vermeye devam ediyoruz.</span>
+                <hr>
+                <h3>Davadilekcesi Platformu</h3>
+                <p>Davadilekcesi.net BİR İMGE kuruluşudur. Sitemizde 7 den 70’e herkesin yanında yer almaktadır. Yaşamımızda başımıza gelen türlü sıkıntılarda hakkımızı ararken ilk dilekçenizin destekçisi biz olalım. Sitemizde tüm hukuk alanlarında dilekçe örnekleri mevcut olup dilekçeler sizlerin kullanımına sunulmuştur. </p>
+                <p>Çağımızın getirdiği yeniliklere bizlerde İmge firması olarak modern tasarımı ve kullanıcı odaklı sitemizle destek vermekteyiz. Sitemizde dilediğiniz alanda dilekçe sorgulaması yapabilir. Sorgulamalar sonrası size uygun dilekçenin sahibi olabilirsiniz.</p>
+                <p>Sitemiz ayrıca sizlere dilekçe edinme noktasında taslak dilekçe ile dilerseniz avukat desteği ile dilekçe doldurulması noktasında da hizmet sağlamaktadır. Dilekçe edinimi esnasında seçtiğiniz dilekçeyi sepete eklerken avukat desteği istiyorum kısmını seçmeniz durumunda dilekçeniz verdiğiniz bilgiler ışığında avukat desteği ile doldurularak tarafınıza iletilecektir.</p>
+                <p>Sitemiz dilekçe aşamasında <b>“3 farklı hukuk bürosu ile danışmanlık anlaşması çerçevesinde”</b> sizlere destek vermektedir. </p>
+            </div>
+        </div>
+    </div>
+    <div class="about-us-vision-mission">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="about-us-vision">
+                        <h4>Hedefimiz</h4>
+                        <div class="au-vision-img">
+                            <img src="/assets/images/vision.png" alt="Vision">
+                        </div>
+
+                    </div>
+                    <p>Hukuki Süreçlerin Temeli Olan Dilekçe Desteğini Herkese Ulaştırmak</p>
+                </div>
+                <div class="col-xl-6">
+                    <div class="about-us-mission">
+                        <h4>Vizyonumuz</h4>
+                        <div class="au-vision-img">
+                            <img src="/assets/images/mission.png" alt="Mission">
+                        </div>
+                    </div>
+                    <p>Dijitaleşen Hukuk Ağının Bir Parçası Olarak 7’den 70’e Herkese Destek Sunmak</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container about-us-blockquote">
+        <div class="row">
+            <div class="col-12">
+                <h3>Davadilekcesi Platformu</h3>
+                <figure>
+                    <blockquote>
+                        <p>‘’Hazır taslak dilekçelerin sizlere sunulması, dilekçe doldurulması aşamasında hukuki destek sağlanmasını web sitemizde oluşturduğumuz sistem ile sizlere sunuyoruz. ‘’</p>
+                    </blockquote>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>

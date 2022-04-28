@@ -1,0 +1,17 @@
+﻿@using BaseCorporate.Service.Helper
+@using BaseCorporate.Web.Helper
+@model BaseCorporate.Service.Model.ArticleViewModel
+
+@{Layout = "~/Themes/Basic/Views/Shared/_Layout.cshtml";}
+@section Head{@await Html.PartialAsync("_Head", HeadHelper.GetArticleDetailHeadModel(Model))}
+
+
+@await Html.PartialAsync("_BreadCrumb", Model.BreadCrumb)
+<section id="main_content">
+    <article>
+        <h1>@Model.Title</h1>
+        <time datetime="@Model.CreatedAt">@Model.CreatedAt.ToString("dd.MM.yyyy")</time>
+        @Html.Raw(Model.Body)
+    </article>
+</section>
+

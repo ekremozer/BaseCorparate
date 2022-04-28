@@ -1,0 +1,43 @@
+﻿
+@using BaseCorporate.Utility.Helper
+@using BaseCorporate.Web.Helper
+@using NonFactors.Mvc.Grid
+@model BaseCorporate.Service.Model.PagedList<BaseCorporate.Service.Model.TagModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Etiketler
+                </h2>
+            </div>
+            <div class="body">
+                @(Html
+                    .Grid(Model.Items)
+                    .Build(columns =>
+                    {
+                        columns.Add(model => model.Name).Titled("İsim");
+                        columns.Add(model => model.ArticleCount).Titled("Kullanan Makale");
+                        columns.Add(model => ExtensionMethods.GetFancyboxLink($"/admin/tag/update/{model.Id}", "btn btn-primary waves-effect",600,600,"Düzenle") +" "+ ExtensionMethods.GetDeleteConfirm($"onclick='TagDelete({model.Id})'", "","Sil")).Encoded(false).Titled("İşlem");
+                     
+                    })
+                    .Id("tag-grid")
+                    .Using(GridProcessingMode.Manual)
+                    .Empty("Veri bulunamadı")
+                    .Pageable(pager =>
+                    {
+                        pager.TotalRows = Model.TotalCount;
+                        pager.RowsPerPage = Model.ItemsPerPage;
+                    })
+                    .RowAttributed(model => new { data_id = model.Id })
+                    )
+
+            </div>
+        </div>
+    </div>
+</div>

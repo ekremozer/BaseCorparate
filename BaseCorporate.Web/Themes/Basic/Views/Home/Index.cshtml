@@ -1,0 +1,23 @@
+﻿@model BaseCorporate.Service.Model.ArticleListView
+@using BaseCorporate.Service.Helper
+@using BaseCorporate.Utility.Helper
+
+@{Layout = "~/Themes/Basic/Views/Shared/_Layout.cshtml";}
+@section Head{@await Html.PartialAsync("_Head", Model.HeadModel)}
+
+<section id="main_content">
+    <ul>
+        @foreach (var item in Model.ArticleList)
+        {
+            <li>
+                <h2><a href="/@item.Slug">@item.Title</a></h2>
+                <time datetime="@item.CreatedAt">@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</time> • <span><a href="/@item.CategoryUrl">@item.Category</a></span>
+                <p>@Html.Raw(item.Summary)</p>
+            </li>
+        }
+    </ul>
+</section>
+
+<ul class="pagination">
+    @Html.Raw(ExtensionMethods.Pager(Model.PagingInfo.TotalPage, Model.PagingInfo.CurrentPage, Model.Slug))
+</ul>

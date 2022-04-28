@@ -1,0 +1,111 @@
+﻿@using BaseCorporate.Web.Helper
+@{
+    var sideMenu = MenuHelper.GetMenuGroup("side-bar");
+    var headerMenu = MenuHelper.GetMenuGroup("header");
+}
+<header>
+    <div class="container">
+        <div class="row h-100 justify-content-between">
+            <div class="col-lg-4 col-sm-6">
+                <div class="logo">
+                    <a href="/"><img src="/assets/images/logo.svg" alt="Dava Dilekçesi"></a>
+                </div>
+            </div>
+            <div class="col-lg-5 order_md_3">
+                <form class="searchbar" onsubmit="event.preventDefault()">
+                    <input type="text" id="header-search-q">
+                    <button><img src="/assets/images/icons/search.png" alt="search-icon" id="header-search-btn"></button>
+                </form>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="authentication">
+                    <a href="/giris-yap" class="login-btn">Giriş Yap</a>
+                    <a href="/uye-ol" class="register-btn">Üye ol</a>
+                    <a class="basket-icon" href="/sepetim"><img src="/assets/images/icons/basket.svg" alt="Sepet"><span id="cart-item-count-badge">0</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 col-8 aside-menu">
+                    <a class="pointer">
+                        <img src="/assets/images/icons/menu.png" alt="menu-icon">
+                        @sideMenu?.Name
+                    </a>
+                </div>
+
+                <ul class="col-lg-9 d_md_none nav-list">
+                    @if (headerMenu != null)
+                    {
+                        @foreach (var menuItems in headerMenu.Items)
+                        {
+
+                            @if (menuItems.SubItems.Count <= 0)
+                            {
+                                <li class="nav-list-item"><a href="@menuItems.Link">@menuItems.Name</a></li>
+                            }
+                            else
+                            {
+                                <li class="nav-list-item">
+                                    <a href="@menuItems.Link">@menuItems.Name <img src="/assets/images/icons/angle-down.png" alt="angle-down"></a>
+                                    <ul class="sub-menu">
+                                        @foreach (var subItems in menuItems.SubItems)
+                                        {
+                                            <li><a href="@subItems.Link">@subItems.Name</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+                <div class="col-sm-6 col-4 d-lg-none mobile-nav-list">
+                    <a class="mobile-menu-btn pointer"><span>Menü</span><img src="/assets/images/icons/close.png" width="18" height="18" alt="Close"></a>
+                    <div class="mobile-dropdown-menu">
+                        <div class="container">
+                            <ul>
+                                @if (headerMenu != null)
+                                {
+                                    @foreach (var menuItems in headerMenu.Items)
+                                    {
+
+                                        @if (menuItems.SubItems.Count <= 0)
+                                        {
+                                            <li><a href="@menuItems.Link">@menuItems.Name</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li class="mobile-has-subdropdown">
+                                                <a href="@menuItems.Link">@menuItems.Name </a>
+                                                <ul class="mobile-subdropdown-menu">
+                                                    @foreach (var subItems in menuItems.SubItems)
+                                                    {
+                                                        <li><a href="@subItems.Link">@subItems.Name</a></li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <aside class="menu-aside">
+            <a class="menu-aside-close-btn"><img src="/assets/images/icons/close.svg" alt=""></a>
+            <ul>
+                @if (sideMenu != null)
+                {
+                    @foreach (var item in sideMenu.Items)
+                    {
+                        <li><a href="@item.Link">@item.Name</a></li>
+                    }
+                }
+            </ul>
+        </aside>
+    </nav>
+</header>

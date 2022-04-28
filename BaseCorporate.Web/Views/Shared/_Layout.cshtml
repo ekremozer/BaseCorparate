@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+
+    @await RenderSectionAsync("Head", true)
+    <link rel="stylesheet" href="/assets/font/roboto/stylesheet.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/media.css">
+</head>
+<body>
+    <div id="mainpage" class="mainpage home">
+        @await Html.PartialAsync("_Header")
+        <main>
+            @RenderBody()
+        </main>
+        @await Html.PartialAsync("_Footer")
+    </div>
+    <div id="whatswidget-pre-wrapper" class="">
+        <div id="whatswidget-widget-wrapper" class="whatswidget-widget-wrapper" style="all:revert;">
+            <div id="whatswidget-conversation" class="whatswidget-conversation">
+                <div class="whatswidget-conversation-header" style="all:revert;">
+                    <div id="whatswidget-conversation-title" class="whatswidget-conversation-title" style="all:revert;">Davadilekçesi.net</div>
+                </div>
+                <div id="whatswidget-conversation-message" class="whatswidget-conversation-message " style="all:revert;">Bir Tıkla Dilekçeniz Hazır</div>
+                <div class="whatswidget-conversation-cta" style="all:revert;">
+                    <a style="all:revert;" id="whatswidget-phone-desktop" target="_blank" href="https://web.whatsapp.com/send?phone=+905418573434" class="whatswidget-cta whatswidget-cta-desktop">Gönder</a>
+                    <a id="whatswidget-phone-mobile" target="_blank" href="https://wa.me/+905418573434" class="whatswidget-cta whatswidget-cta-mobile" style="all:revert;">Gönder</a>
+                </div>
+                <a target="_blank" class="whatswidget-link" href="https://www.oflox.com" title="Feito no WhatsWidget" style="all:revert;">
+                    <img src="" width="16px" style="all:revert;">
+                </a>
+            </div>
+            <div id="whatswidget-conversation-message-outer" class="whatswidget-conversation-message-outer" style="all:revert;">
+                <span id="whatswidget-text-header-outer" class="whatswidget-text-header-outer" style="all:revert;">Davadilekçesi.net</span>
+                <br>
+                <div id="whatswidget-text-message-outer" class="whatswidget-text-message-outer" style="all:revert;">Bir Tıkla Dilekçeniz Hazır</div>
+            </div>
+            <div class="whatswidget-button-wrapper" style="all:revert;">
+                <div class="whatswidget-button" id="whatswidget-button" style="all:revert;">
+                    <div style="margin:0 auto;width:38.5px;all:revert;">
+                        <img class="whatswidget-icon" style="all:revert;" src=" https://www.oflox.com/blog/wp-content/uploads/2021/01/wpwhite.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/jquery.inputmask.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/underscore.min.js"></script>
+        <script src="/assets/js/validate.min.js"></script>
+        <script src="/assets/js/owl.carousel.min.js"></script>
+        <script src="/assets/js/script.js"></script>
+        @await RenderSectionAsync("Scripts", false)
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-N95ZBMS115"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-N95ZBMS115');
+        </script>
+    </div>
+</body>
+</html>

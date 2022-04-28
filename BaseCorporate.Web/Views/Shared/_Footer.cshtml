@@ -1,0 +1,75 @@
+﻿@using BaseCorporate.Web.Helper
+@{
+    var footer1 = MenuHelper.GetMenuGroup("footer-1");
+    var footer2 = MenuHelper.GetMenuGroup("footer-2");
+    var footer3 = MenuHelper.GetMenuGroup("footer-3");
+}
+<footer>
+    <div class="footer-content">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-corporate">
+                        <h3>davadilekcesi.net</h3>
+                        <p>Sitemiz globalleşen dünyada ihtiyacınız olan danışmanlık hizmetini evinize ofisinize daha kısa bir ifade ile bir tık ötenize taşımaktadır. Davadilekçesi sitemize girerek çok kısa zamanda ister hazır dilekçe isterseniz de avukat yardımı ile dilekçe satın alabilirsiniz</p>
+                    </div>
+                </div>
+                @if (footer1 != null)
+                {
+                    <div class="col-lg-2 col-md-4">
+                        <h6>@footer1?.Name</h6>
+                        <ul>
+                            @foreach (var item in footer1.Items)
+                            {
+                                <li><a href="@item.Link">@item.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                }
+                @if (footer2 != null)
+                {
+                    <div class="col-lg-2 col-md-6">
+                        <h6>@footer2?.Name</h6>
+                        <ul>
+
+                            @foreach (var item in footer2.Items)
+                            {
+                                <li><a href="@item.Link">@item.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                }
+                <div class="col-lg-3 col-md-4">
+                    <h6>@footer3?.Name</h6>
+                    <ul>
+                        @if (footer3 != null)
+                        {
+                            @foreach (var item in footer3.Items)
+                            {
+                                <li><a href="@item.Link">@item.Name</a></li>
+                            }
+                        }
+                    </ul>
+                    <div class="footer-social-media">
+                        <a href="https://www.facebook.com/Davadilekcesinet-108810471424562"><img src="/assets/images/icons/facebook.png" alt="facebook"></a>
+                        <a href="https://twitter.com/DavadilekcesiN"><img src="/assets/images/icons/twitter.png" alt="twitter"></a>
+                        <a href="https://www.instagram.com/net.davadilekcesi/"><img src="/assets/images/icons/instagram.png" alt="instagram"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between">
+                    <p>Copyright © 2021, Tüm hakları saklıdır.</p>
+                    <a id="back-to-top-btn" href="#mainpage" class="back-to-top-btn flex-center">
+                        <img src="/assets/images/icons/blue-arrow-up.png" alt="back-to-top-arrow">
+                        <span>Yukarı</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

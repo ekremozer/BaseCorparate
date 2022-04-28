@@ -1,0 +1,65 @@
+﻿@model BaseCorporate.Service.Model.CategoryModel
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_IframeLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="body">
+                    <form id="CategoryAddOrUpdate" action="/admin/category/addorupdate" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <div class="col-sm-3">
+                            <label for="name">Adı</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="name" name="name" value="@Model.Name" class="form-control" placeholder="Adı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="name">Üst Kategori</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <select class="form-control show-tick" id="parentCategoryId" name="parentCategoryId">
+                                        @foreach (var category in Model.ParentCategories)
+                                        {
+                                            if (category.Id == Model.ParentCategoryId)
+                                            {
+                                                <option value="@category.Id" selected>@category.Value</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@category.Id">@category.Value</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="name">Açıklama</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea rows="4" class="form-control no-resize" id="description" name="description" placeholder="Açıklama">@Model.Description</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="name">Meta Description</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea rows="4" class="form-control no-resize" id="metaDescription" name="metaDescription" placeholder="Meta description">@Model.MetaDescription</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,9 @@
+﻿@model string
+<ul class="breadcrumb">
+    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/"><span itemprop="name">Ana Sayfa</span></a>
+        <meta itemprop="position" content="1">
+    </li>
+    @Html.Raw(Model)
+</ul>
+

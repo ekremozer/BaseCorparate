@@ -1,0 +1,6 @@
+﻿@using BaseCorporate.Service.Helper
+@using BaseCorporate.Utility.Helper
+
+@{Layout = "~/Themes/Basic/Views/Shared/_Layout.cshtml";}
+@section Head{@await Html.PartialAsync("_Head", HeadHelper.GetCustomHeadModel("Hakkımızda", "/hakkimizda"))}
+@await Html.PartialAsync("_BreadCrumb", ExtensionMethods.GetBreadCrumbListElement("/hakkimizda", "Hakkımızda", "2"))

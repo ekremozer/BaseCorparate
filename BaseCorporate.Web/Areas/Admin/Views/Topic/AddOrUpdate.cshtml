@@ -1,0 +1,79 @@
+﻿@model BaseCorporate.Service.Model.TopicModel
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>Sayfa Ekle</h2>
+            </div>
+            <div class="body">
+                <form action="/admin/topic/addorupdate" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <label for="pageTitle">Sayfa Başlığı</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" id="pageTitle" name="pageTitle" value="@Model.PageTitle" class="form-control" placeholder="Sayfa Başlığı">
+                        </div>
+                    </div>
+                    <label for="title">İç Başlık</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" id="title" name="title" value="@Model.Title" class="form-control toUrl" placeholder="İç Başlık">
+                        </div>
+                    </div>
+                    <label for="slug">Url</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" id="slug" name="slug" value="@Model.Slug" class="form-control url" placeholder="Url">
+                        </div>
+                    </div>
+                    <label for="tags">Etiket</label>
+                    <label for="metaDescription">Meta Description</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" id="metaDescription" name="metaDescription" value="@Model.MetaDescription" class="form-control" placeholder="Meta Descriotion">
+                        </div>
+                    </div>
+                    <label for="metaKeywords">Meta Keywords</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" id="metaKeywords" name="metaKeywords" value="@Model.MetaKeywords" class="form-control" data-role="tagsinput">
+                        </div>
+                    </div>
+                    <label for="siteMapPriority">SiteMap Önceliği</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" id="siteMapPriority" name="siteMapPriority" value="@Model.SiteMapPriority" class="form-control" placeholder="SiteMap Önceliği">
+                        </div>
+                    </div>
+                    <label for="body">İçerik</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <textarea id="body" name="body">@Model.Body</textarea>
+                        </div>
+                    </div>
+                    @if (!string.IsNullOrEmpty(Model.Image))
+                    {
+                        <label for="image">Mecvut Görsel</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <img src='/assets/image/article/@Model.Image' style='width:50px' />
+                            </div>
+                        </div>
+                    }
+                    <label for="image">Görsel</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="file" id="image" name="image" class="form-control">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary m-t-15 waves-effect">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

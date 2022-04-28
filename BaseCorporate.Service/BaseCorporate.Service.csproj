@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>BaseCorporate.Service</AssemblyName>
+    <RootNamespace>BaseCorporate.Service</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BaseCorporate.Dal\BaseCorporate.Dal.csproj" />
+    <ProjectReference Include="..\BaseCorporate.Entities\BaseCorporate.Entities.csproj" />
+    <ProjectReference Include="..\BaseCorporate.Utility\BaseCorporate.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

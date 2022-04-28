@@ -1,0 +1,50 @@
+﻿@model BaseCorporate.Service.Model.PagedList<BaseCorporate.Service.Model.TopicModel>
+@using BaseCorporate.Utility.Helper
+@using NonFactors.Mvc.Grid
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Sayfalar
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="/admin/topic/add">Sayfa Ekle</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                @(Html
+                    .Grid(Model.Items)
+                    .Build(columns =>
+                    {
+                        columns.Add(model => model.Title).Titled("Başlık");
+                        columns.Add(model =>$"<a href='/admin/topic/update/{model.Id}' class='btn btn-primary waves-effect'>Düzenle</a> " + ExtensionMethods.GetDeleteConfirm($"onclick='TopicDelete({model.Id})'", "", "Sil")).Encoded(false).Titled("İşlem");
+
+                    })
+                    .Id("topic-grid")
+                    .Using(GridProcessingMode.Manual)
+                    .Empty("Veri bulunamadı")
+                    .Pageable(pager =>
+                    {
+                        pager.TotalRows = Model.TotalCount;
+                        pager.RowsPerPage = Model.ItemsPerPage;
+                    })
+                    .RowAttributed(model => new { data_id = model.Id })
+                    )
+            </div>
+        </div>
+    </div>
+</div>

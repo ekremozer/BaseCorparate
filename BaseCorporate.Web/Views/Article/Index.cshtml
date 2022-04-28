@@ -1,0 +1,64 @@
+﻿@using BaseCorporate.Service.Helper
+@using BaseCorporate.Utility.Helper
+@using CategoryHelper = BaseCorporate.Web.Helper.CategoryHelper
+@model BaseCorporate.Service.Model.ArticleListView
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@section Head{@await Html.PartialAsync("_Head", Model.HeadModel)}
+
+@await Html.PartialAsync("_BreadCrumb", Model.BreadCrumb)
+<section class="case-sorting">
+    <div class="container">
+        <div class="row">
+            <aside class="col-xl-3 col-lg-4">
+                <div class="aside-filter">
+                    <div class="filter-title">
+                        <h5><img src="/assets/images/icons/filter.png" alt="filter"> Kategoriler</h5>
+                    </div>
+                    <input id="filter-toggle" type="checkbox" class="d-none">
+                    <div class="filter-options">
+                        <div class="primary-filter-options">
+                            @{ var categoriesThree = CategoryHelper.GetCategoriesThree(Model.CategoryId); }
+                            <ul>
+                                @foreach (var item in categoriesThree)
+                                {
+                                    <li><a href="/@item.Slug">@item.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <div class="case-search-results col-xl-9 col-lg-8">
+                @if (Model.CategoryId > 0)
+                {
+                    <form class="case-searchbar" onsubmit="event.preventDefault()">
+                        <input type="text" id="category-search-q" cat-id="@Model.CategoryId" placeholder="Arama">
+                        <button><img src="/assets/images/icons/search.png" id="category-search-btn" alt="Dilekçe Ara"></button>
+                    </form>
+                }
+
+                <div class="case-card-list case-card-list-signle active" data-tab="1">
+                    @foreach (var item in Model.ArticleList)
+                    {
+                        <div class="case-card case-card-single">
+                            <div class="case-card-img">
+                                <img class="img-fluid" src="/assets/images/article/@item.Image" alt="@item.Title">
+                            </div>
+                            <div class="case-card-comment">
+                                <h4><a href="/@item.Slug">@item.Title</a></h4>
+                                <span><time>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</time></span>
+                                @Html.Raw(item.Summary)
+                                <a class="card-btn" href="/@item.Slug">Detay</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <nav class="pagination">
+                    <ul>
+                        @Html.Raw(ExtensionMethods.Pager(Model.PagingInfo.TotalPage, Model.PagingInfo.CurrentPage, Model.Slug))
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

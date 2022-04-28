@@ -1,0 +1,20 @@
+﻿@using BaseCorporate.Service.Helper
+@using BaseCorporate.Utility.Helper
+@model List<BaseCorporate.Service.Model.ArchivePeriodModel>
+@{Layout = "~/Themes/Basic/Views/Shared/_Layout.cshtml";}
+@section Head{@await Html.PartialAsync("_Head", HeadHelper.GetCustomHeadModel("Makale Arşivi", "/arsiv"))}
+
+
+<section id="main_content">
+    @await Html.PartialAsync("_BreadCrumb", ExtensionMethods.GetBreadCrumbListElement("/arsiv", "Arşiv", "2"))
+    <article>
+        <h1>Makale Arşivi</h1>
+        <time datetime="@(DateTime.Now)" class="by-line">@(DateTime.Now.ToString("dd.MM.yyyy"))</time>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li class="arc-link"><a href="/arsiv/@item.Year/@item.Month">@item.DisplayName</a></li>
+            }
+        </ul>
+    </article>
+</section>

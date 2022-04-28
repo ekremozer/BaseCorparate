@@ -1,0 +1,20 @@
+﻿@using BaseCorporate.Service.Helper
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@section Head{
+    @await Html.PartialAsync("_Head", HeadHelper.GetDefaultHeadModel())
+    <meta name="robots" content="noindex">
+}
+<section class="error-content error-404">
+    <div class="container">
+        <div class="row flex_md_column_reverse">
+            <div class="col-lg-4 align-self-center">
+                <h1>Sayfa bulunamadı!</h1>
+                <p>Aradığınız sayfa bulunmadı veya başka bir hata oluştu. Yeni bir yön seçmek için geri dönün veya <a href="/">davadilekçesi.net</a>'e gidin.</p>
+            </div>
+            <div class="col-lg-8">
+                <img src="/assets/images/404.png" alt="Error Code 500">
+            </div>
+        </div>
+    </div>
+</section>

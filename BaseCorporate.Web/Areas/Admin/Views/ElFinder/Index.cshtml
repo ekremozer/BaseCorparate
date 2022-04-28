@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>elFinder</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="~/Areas/Admin/Assets/Plugins/elfinder/css/elfinder.full.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/Assets/Plugins/elfinder/css/theme.min.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/Assets/Plugins/elfinder/themes/elfinder-material-theme/Material/css/theme-gray.css" />
+
+    <script src="~/Areas/Admin/Assets/Plugins/jquery/jquery.min.js"></script>
+    <script src="~/Areas/Admin/Assets/Plugins/jquery/jquery-ui.min.js"></script>
+    <script src="~/Areas/Admin/Assets/Plugins/elfinder/js/elfinder.min.js"></script>
+</head>
+
+<body>
+    <div id="elfinder"></div>
+
+    <script>
+        $(document).ready(function () {
+
+            var elFinderCommands = [
+                'archive', 'back', 'chmod', 'colwidth', 'copy', 'cut', 'download', 'duplicate', 'edit', 'extract',
+                'forward', 'fullscreen', 'getfile', 'help', 'home', 'info', 'mkdir', 'mkfile', 'netmount', 'netunmount',
+                'open', 'opendir', 'paste', 'places', 'quicklook', 'reload', 'rename', 'resize', 'restore', 'rm',
+                'search', 'sort', 'up', 'upload', 'view', 'zipdl'
+            ];
+
+            var disabledCommands = ['archive', 'callback', 'chmod', 'editor', 'netmount', 'ping', 'search', 'zipdl', 'help'];
+
+            $.each(disabledCommands, function (i, cmd) {
+                var commandIndex = $.inArray(cmd, elFinderCommands);
+                commandIndex !== -1 && elFinderCommands.splice(commandIndex, 1);
+            });
+
+            function getUrlParam(paramName) {
+                var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i');
+                var match = window.location.search.match(reParam);
+
+                return (match && match.length > 1) ? match[1] : '';
+            }
+
+            var funcNum = getUrlParam('CKEditorFuncNum');
+
+            var options = {
+                baseUrl: "/Areas/Admin/Assets/Plugins/elfinder/",
+                url: "/admin/elfinder/connector",
+                rememberLastDir: false,
+                commands: elFinderCommands,
+                getFileCallback: function (file) {
+                    window.opener.CKEDITOR.tools.callFunction(funcNum, file.url.replace(window.location.origin, ""));
+                    window.close();
+                },
+                uiOptions: {
+                    toolbar: [
+                        ['back', 'forward'],
+                        ['reload'],
+                        ['home', 'up'],
+                        //['mkdir', 'mkfile', 'upload'],
+                        ['open', 'download'],
+                        ['undo', 'redo'],
+                        ['info'],
+                        ['quicklook'],
+                        ['copy', 'cut', 'paste'],
+                        ['rm'],
+                        ['duplicate', 'rename', 'edit'],
+                        ['selectall', 'selectnone', 'selectinvert'],
+                        ['view', 'sort']
+                    ]
+                },
+                onlyMimes: ["image"],
+                lang: 'tr'
+            };
+            $('#elfinder').elfinder(options).elfinder('instance');
+        });
+    </script>
+</body>
+</html>

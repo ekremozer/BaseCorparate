@@ -1,0 +1,79 @@
+﻿@model BaseCorporate.Service.Model.UserModel
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_IframeLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="body">
+                    <form id="UserAddOrUpdate" action="/admin/user/addorupdate" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <div class="col-sm-3">
+                            <label for="name">Ad</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="name" name="name" value="@Model.Name" class="form-control" placeholder="Adı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="surname">Soyad</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="surname" name="surname" value="@Model.Surname" class="form-control" placeholder="Soyad">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="email">Email</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="email" name="email" value="@Model.Email" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="">Şifre</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="password" id="password" name="password" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="isActive">Aktif</label>
+                            <div class="form-group">
+                                <input type="checkbox" id="isActive" name="isActive" checked="@Model.IsActive" value="@Model.IsActive">
+                                <label for="isActive">Kullanıcı girişi aktif</label>
+                            </div>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(Model.Avatar))
+                        {
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <img src='/areas/admin/assets/avatar/@Model.Avatar' style='width:50px' id='avatar-@Model.Id' />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-sm-3">
+                            <label for="avatarFile">Avatar</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="file" id="avatarFile" name="avatarFile" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

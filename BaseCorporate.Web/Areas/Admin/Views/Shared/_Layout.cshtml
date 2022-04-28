@@ -1,0 +1,236 @@
+﻿@using BaseCorporate.Utility.Helper
+@using BaseCorporate.Web.Helper
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@AppParameter.MetaSetting.OgSiteName | Admin</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <!-- Favicon-->
+    @*<link rel="icon" href="../../favicon.ico" type="image/x-icon">*@
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="/areas/admin/assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Waves Effect Css -->
+    <link href="/areas/admin/assets/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="/areas/admin/assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="/areas/admin/assets/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="/areas/admin/assets/css/themes/all-themes.css" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+
+    <link href="/areas/admin/assets/css/mvc-grid/mvc-grid.css" rel="stylesheet" />
+    <!-- Sweetalert Css -->
+    <link href="/areas/admin/assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="/areas/admin/assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="/areas/admin/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+    <!-- Multi Select Css -->
+    <link href="/areas/admin/assets/plugins/multi-select/css/multi-select.css" rel="stylesheet">
+</head>
+
+<body class="theme-red">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Lütfen bekleyin...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/admin">@AppParameter.MetaSetting.OgSiteName</a>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    @if (string.IsNullOrEmpty(ViewBag.AdminSession.Avatar))
+                    {
+                        <img src="/areas/admin/assets/avatar/default.jpg" width="48" height="48" alt="User" />
+                    }
+                    else
+                    {
+                        <img src="/areas/admin/assets/avatar/@ViewBag.AdminSession.Avatar" width="48" height="48" alt="User" />
+                    }
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@ViewBag.AdminSession.Name @ViewBag.AdminSession.Surname</div>
+                    <div class="email">@ViewBag.AdminSession.Email</div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li>@Html.Raw(ExtensionMethods.GetFancyboxLink($"/admin/user/update/{ViewBag.AdminSession.Id}", "", 600, 600, "<i class=\"material-icons\">person</i>Profil"))</li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/admin/user/logout"><i class="material-icons">input</i>Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">Ana Menü</li>
+                    <li>
+                        <a href="/admin">
+                            <i class="material-icons">home</i>
+                            <span>Pano</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">folder_open</i>
+                            <span>İçerik Yönetimi</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/admin/category">Kategoriler</a>
+                            </li>
+                            <li>
+                                <a href="/admin/tag">Etiketler</a>
+                            </li>
+                            <li>
+                                <a href="/admin/article">Makaleler</a>
+                            </li>
+                            <li>
+                                <a href="/admin/topic">Sayfalar</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">build</i>
+                            <span>Sistem</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/admin/user">Kullanıcılar</a>
+                            </li>
+                            <li>
+                                <a href="/admin/menugroup">Menü</a>
+                            </li>
+                            <li>
+                                <a href="/admin/setting">Ayarlar</a>
+                            </li>
+                            <li>
+                                <a href="/admin/message">Mesajlar</a>
+                            </li>
+                            <li>
+                                <a href="/admin/pagenotfoundlog">404 Kayıtları</a>
+                            </li>
+                            <li>
+                                <a href="/admin/redirectrecord">301 Kayıtları</a>
+                            </li>
+                            <li>
+                                <a href="/admin/errorlog">Hata Kayıtları</a>
+                            </li>
+                            <li>
+                                <a href="/admin/urlrecord">Url Listesi</a>
+                            </li>
+                            <li>
+                                <a href="/admin/robotstxt">Robots.txt</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2021 <a href="javascript:void(0);">davadilekcesi.net</a>
+                </div>
+                <div class="version">
+                    <b>Version: </b> 1.0
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+    </section>
+
+    <section class="content">
+        @*<div class="container-fluid">
+                <div class="block-header">
+                    <h2>BLANK PAGE</h2>
+                </div>
+            </div>*@
+        @RenderBody()
+    </section>
+
+    <!-- Jquery Core Js -->
+    <script src="/areas/admin/assets/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="/areas/admin/assets/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="/areas/admin/assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="/areas/admin/assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="/areas/admin/assets/plugins/node-waves/waves.js"></script>
+
+    <!-- Custom Js -->
+    <script src="/areas/admin/assets/js/admin.js"></script>
+    @*<script src="/areas/admin/assets/js/pages/tables/jquery-datatable.js"></script>*@
+
+    <!-- Demo Js -->
+    <script src="/areas/admin/assets/js/demo.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script src="/areas/admin/assets/js/mvc-grid/mvc-grid.js"></script>
+    <!-- SweetAlert Plugin Js -->
+    <script src="/areas/admin/assets/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script src="/areas/admin/assets/plugins/ckeditor/ckeditor.js"></script>
+
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="/areas/admin/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+    <!-- Multi Select Plugin Js -->
+    <script src="/areas/admin/assets/plugins/multi-select/js/jquery.multi-select.js"></script>
+    <script src="/areas/admin/assets/js/layout.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+﻿@model string
+
+<section class="breadcrumb-section">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col breadcrumb-nav">
+                <ul>
+                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                        <a itemprop="item" href="/"><span itemprop="name">Ana Sayfa</span></a>
+                        <meta itemprop="position" content="1">
+                    </li>
+                  @Html.Raw(Model)
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

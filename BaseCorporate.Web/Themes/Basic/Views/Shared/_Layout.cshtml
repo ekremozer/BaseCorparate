@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+
+    @await RenderSectionAsync("Head", true)
+    <meta name="google-site-verification" content="M4KX4q_4fljmgC-Kc1_MzSxxbeTeaAJTdmbBT8DyO80" />
+    <link rel="stylesheet" href="/themes/basic/assets/css/main.css">
+    <link href="/themes/basic/assets/css/shCore.css" rel="stylesheet" />
+    <link href="/themes/basic/assets/css/shThemeRDark.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        @await Html.PartialAsync("_Header")
+        <div class="container">
+            @RenderBody()
+        </div>
+    </div>
+    @await Html.PartialAsync("_Footer")
+
+    <script src="/themes/basic/assets/js/shCore.js"></script>
+    <script src="/themes/basic/assets/js/shBrushCSharp.js"></script>
+    <script src="/themes/basic/assets/js/shBrushSql.js"></script>
+    <script src="/themes/basic/assets/js/fakir.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            SyntaxHighlighter.highlight();
+        });
+    </script>
+</body>
+</html>

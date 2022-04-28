@@ -1,0 +1,98 @@
+﻿@using BaseCorporate.Service.Helper
+@using BaseCorporate.Web.Helper
+@model BaseCorporate.Service.Model.ArticleViewModel
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@section Head{@await Html.PartialAsync("_Head", HeadHelper.GetArticleDetailHeadModel(Model))}
+
+@await Html.PartialAsync("_BreadCrumb", Model.BreadCrumb)
+@{ var recommendedArticles = ArticleHelper.GetByCategoryForDetail(Model.CategoryId, Model.Id, 6);}
+<section>
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 case-details-title">
+                    <h1>@Model.Title</h1>
+                    <p><date>@Model.CreatedAt.ToString("dd.MM.yyyy")</date></p>
+                </div>
+            </div>
+        </div>
+      
+        <div class="container">
+            <div class="row add-to-cart-wrapper">
+                <div class="col-12">
+                    <div class="add-to-cart">
+                        <div class="add-to-cart-img">
+                            <img src="/assets/images/add-to-cart.png" alt="add to cart image">
+                            <img src="/assets/images/add-to-cart.png" alt="add to cart image">
+                        </div>
+                        <div class="add-to-cart-comment">
+                            <p>Bu dilekçeyi hemen <strong>0TL</strong>’ye satın alın!</p>
+                        </div>
+                        <a class="add-to-cart-btn" href="javascript:void(0)" onclick="addToCart(@Model.Id)">Sepete Ekle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-12 case-details-comment">
+                    <img class="detail-img" src="/assets/images/article/@Model.Image" alt="@Model.Title">
+                    @Html.Raw(Model.Body)
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+@if (recommendedArticles.Count>0)
+{
+<section class="other-releted-cases">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Bunlar da ilginizi çekebilir</h2>
+            </div>
+        </div>
+        <div class="case-card-list-multiple">
+            <div class="owl-carousel owl-theme owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1305px;">
+                        @foreach (var article in recommendedArticles)
+                        {
+                        <div class="owl-item active" style="width: 426.667px; margin-right: 8px;">
+                            <div class="item">
+                                <a href="/@article.Slug" class="case-card case-card-multiple">
+                                    <div class="case-card-img">
+                                        <img class="img-fluid" src="/assets/images/article/@article.Image" alt="@article.Title">
+                                    </div>
+                                    <div class="case-card-comment">
+                                        <h4>@article.Title</h4>
+                                        <span><time>@article.CreatedAt.ToString("dd.MM.yyyy HH:mm")</time></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="owl-nav disabled">
+                    <button type="button" role="presentation" class="owl-prev">
+                        <span aria-label="Previous">‹</span>
+                    </button>
+                    <button type="button" role="presentation" class="owl-next">
+                        <span aria-label="Next">›</span>
+                    </button>
+                </div>
+                <div class="owl-dots disabled">
+                    <button role="button" class="owl-dot active">
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+}
+

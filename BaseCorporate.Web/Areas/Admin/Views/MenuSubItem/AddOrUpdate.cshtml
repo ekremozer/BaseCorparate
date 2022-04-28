@@ -1,0 +1,73 @@
+﻿@model BaseCorporate.Service.Model.MenuSubItemModel
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_IframeLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="body">
+                    <form id="MenuItemAddOrUpdate" action="/admin/menusubitem/addorupdate" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <input type="hidden" name="groupKey" value="@Model.GroupKey" />
+                        <div class="col-sm-3">
+                            <label for="name">Adı</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="name" name="name" value="@Model.Name" class="form-control" placeholder="Adı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="name">Link</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="link" name="link" value="@Model.Link" class="form-control" placeholder="Link">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="name">Üst Menü</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <select class="form-control show-tick" id="itemId" name="itemId">
+                                        @foreach (var item in Model.Items)
+                                        {
+                                            if (item.Id == Model.ItemId)
+                                            {
+                                                <option value="@item.Id" selected>@item.Value</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Id">@item.Value</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="external">Dış Link</label>
+                            <div class="form-group">
+                                <input type="checkbox" id="external" name="external" checked="@Model.External" value="@Model.External">
+                                <label for="external">Dış Link</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="name">Sıra</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="orderBy" name="orderBy" value="@Model.OrderBy" class="form-control" placeholder="Sıra">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

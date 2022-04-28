@@ -1,0 +1,45 @@
+﻿@using BaseCorporate.Web.Helper
+@{ var lastAdded = ArticleHelper.GetLastAdded(6);}
+<section class="recent-additions-cases">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Son Eklenenler</h2>
+            </div>
+        </div>
+        <div class="case-card-list-multiple">
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in lastAdded.Take(3))
+                {
+                    <div class="item">
+                        <a href="/@item.Slug" class="case-card case-card-multiple">
+                            <div class="case-card-img">
+                                <img class="img-fluid" src="/assets/images/article/@item.Image" alt="@item.Title">
+                            </div>
+                            <div class="case-card-comment">
+                                <h4>@item.Title</h4>
+                                <span><time>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</time></span>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in lastAdded.Skip(3))
+                {
+                    <div class="item">
+                        <a href="/@item.Slug" class="case-card case-card-multiple">
+                            <div class="case-card-img">
+                                <img class="img-fluid" src="/assets/images/article/@item.Image" alt="@item.Title">
+                            </div>
+                            <div class="case-card-comment">
+                                <h4>@item.Title</h4>
+                                <span><time>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</time></span>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

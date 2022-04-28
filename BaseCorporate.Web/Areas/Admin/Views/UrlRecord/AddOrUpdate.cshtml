@@ -1,0 +1,33 @@
+﻿@model BaseCorporate.Service.Model.UrlRecordModel
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_IframeLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="body">
+                    <form id="UrlRecordUpdate" action="/admin/urlrecord/update" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <input type="hidden" name="ArticleId" value="@Model.ArticleId" />
+                        <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+                        <input type="hidden" name="TagId" value="@Model.TagId" />
+                        <input type="hidden" name="TopicId" value="@Model.TopicId" />
+                        <div class="col-sm-3">
+                            <label for="Slug">Url</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" id="Slug" name="Slug" value="@Model.Slug" class="form-control" placeholder="Url">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
