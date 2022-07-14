@@ -22,7 +22,7 @@ namespace BaseCorporate.Web.Infrastructure
             {
                 var urlRecordService = ServiceLocator.ServiceProvider.GetService<IUrlRecordService>();
                 var urlRecord = urlRecordService.Get(slug);
-                if (urlRecord != null)
+                if (urlRecord != null && urlRecord.EntityIsActive)
                 {
                     if (urlRecord.ArticleId != null)
                     {

@@ -13,6 +13,7 @@ namespace BaseCorporate.Service.Model
         public int? TagId { get; set; }
         public int? TopicId { get; set; }
         public bool UpdateEntity { get; set; }
+        public bool EntityIsActive { get; set; }
 
         public UrlRecordModel()
         {

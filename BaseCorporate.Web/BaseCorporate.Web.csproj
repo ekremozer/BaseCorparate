@@ -5,6 +5,7 @@
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
     <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
     <AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
+    <UserSecretsId>ccd70a97-8b02-4fd4-9f66-88ed79c00493</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

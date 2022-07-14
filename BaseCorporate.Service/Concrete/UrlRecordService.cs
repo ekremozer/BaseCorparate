@@ -37,7 +37,8 @@ namespace BaseCorporate.Service.Concrete
                 CategoryId = x.CategoryId,
                 TagId = x.TagId,
                 TopicId = x.TopicId,
-                Slug = x.Slug
+                Slug = x.Slug,
+                EntityIsActive = (x.ArticleId != null && x.Article.IsActive) || (x.CategoryId != null && x.Category.IsActive) || (x.TagId != null && x.Tag.IsActive) || (x.TopicId != null && x.Topic.IsActive)
             }).FirstOrDefault();
 
             return model;
