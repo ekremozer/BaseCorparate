@@ -484,7 +484,7 @@ namespace BaseCorporate.Service.Concrete
         public List<ArchivePeriodModel> GetArchivePeriods()
         {
             using var context = new EfContext();
-            var archivePeriods = context.Articles.Where(x => x.IsActive).OrderByDescending(x => x.CreatedAt.Year).ThenByDescending(x => x.CreatedAt.Month).GroupBy(x => new
+            var archivePeriods = context.Articles.Where(x => x.IsActive).GroupBy(x => new
             {
                 x.CreatedAt.Year,
                 x.CreatedAt.Month
@@ -494,7 +494,7 @@ namespace BaseCorporate.Service.Concrete
                 Count = x.Count(),
                 Year = x.Key.Year,
                 Month = x.Key.Month
-            }).ToList();
+            }).ToList().OrderByDescending(x => x.Year).ThenByDescending(x => x.Month).ToList();
 
             return archivePeriods;
         }
