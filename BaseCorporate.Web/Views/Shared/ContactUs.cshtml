@@ -1,7 +1,7 @@
 ﻿@using BaseCorporate.Service.Helper
 @using BaseCorporate.Utility.Helper
 @{Layout = "~/Views/Shared/_Layout.cshtml";}
-@section Head{@Html.Partial("_Head", HeadHelper.GetCustomHeadModel("İletişim", "/iletisim"))}
+@section Head{@await Html.PartialAsync("_Head", HeadHelper.GetCustomHeadModel("İletişim", "/iletisim"))}
 @await Html.PartialAsync("_BreadCrumb", ExtensionMethods.GetBreadCrumbListElement("/iletisim", "İletişim", "2"))
 <section class="contact-content">
     <div class="container">

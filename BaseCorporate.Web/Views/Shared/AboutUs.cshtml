@@ -2,7 +2,7 @@
 @using BaseCorporate.Utility.Helper
 
 @{Layout = "~/Views/Shared/_Layout.cshtml";}
-@section Head{@Html.Partial("_Head", HeadHelper.GetCustomHeadModel("Hakkımızda", "/hakkimizda"))}
+@section Head{@await Html.PartialAsync("_Head", HeadHelper.GetCustomHeadModel("Hakkımızda", "/hakkimizda"))}
 @await Html.PartialAsync("_BreadCrumb", ExtensionMethods.GetBreadCrumbListElement("/hakkimizda", "Hakkımızda", "2"))
 <section class="">
     <div class="container">
